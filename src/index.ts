@@ -1,103 +1,31 @@
-///////////////////////////
-// 1. Card Types
-///////////////////////////
-type CardType = "LEADER" | "CHARACTER" | "EVENT" | "STAGE";
+// Re-export all types for external use
+export type {
+  Card,
+  Color,
+  Attribute,
+  CardType,
+  Keyword,
+  Zone,
+  TargetScope,
+  Operator,
+  Duration,
+  TurnPhase,
+  TriggerTiming,
+  RuleType,
+  CostType,
+  Condition,
+  EffectType,
+  Target,
+  Effect,
+  Cost,
+  Rule,
+} from "./types/index.js";
 
-///////////////////////////
-// 2. Keywords
-///////////////////////////
-type Keyword = 
-    | "BLOCKER"
-    | "RUSH"
-    | "BANISH"
-    | "DOUBLE_ATTACK"
-    | "UNBLOCKABLE"
-    | "TRIGGER"
-    | "COUNTER";
-
-
-///////////////////////////
-// 4. Effect
-///////////////////////////
-type Effect =
-  | { type: "DRAW"; amount: number }
-  | { type: "KO"; target: "SELF" | "TARGET" }
-  | { type: "ADD_POWER"; target: "SELF" | "TARGET" | "LEADER"; amount: number }
-  | { type: "REST"; target: "SELF" | "TARGET" }
-  | { type: "UNREST"; target: "SELF" | "TARGET" }
-  | { type: "ATTACH_DON"; target: "SELF" | "TARGET"; amount: number }
-  | { type: "DEAL_DAMAGE"; target: "OPPONENT"; amount: number };
-
-///////////////////////////
-// 5. Condition
-///////////////////////////
-type Operator = "EQUALS" | "LTE" | "GTE" | "CONTAINS";
-
-interface Condition {
-  fact: string;                     // e.g., "self.power", "target.cost", "event.fromZone"
-  operator: Operator;
-  value: number | string | boolean;
-}
-
-///////////////////////////
-// 6. Target
-///////////////////////////
-type TargetScope =
-  | "SELF"
-  | "OPPONENT"
-  | "SINGLE_ENEMY_CHARACTER"
-  | "ALL_ENEMY_CHARACTERS"
-  | "SINGLE_FRIENDLY_CHARACTER"
-  | "ALL_FRIENDLY_CHARACTERS"
-  | "LEADER";
-
-interface Target {
-  scope: TargetScope;
-}
-
-///////////////////////////
-// 7. Trigger Timing
-///////////////////////////
-type TriggerTiming =
-  | "ON_PLAY"
-  | "ON_ATTACK_STEP"
-  | "ON_BLOCK_STEP"
-  |  "ON_KO"
-  | "COUNTER_STEP"
-  | "AFTER_DAMAGE";
-
-///////////////////////////
-// 8. Rule
-///////////////////////////
-interface Rule {
-  id: string;
-  timing?: TriggerTiming;                   // when this rule can be considered
-  condition?: Condition[];     // single or multiple conditions (AND by default)
-  target?: Target;
-  effects: Effect[];
-  optional?: boolean;                       // player may choose to activate
-  replacementEffect?: boolean;              //“do something else instead of going to hand” is called a replacement effect.
-}
-
-///////////////////////////
-// 9. Trigger
-///////////////////////////
-interface Trigger {
-  rules: Rule[];
-}
-
-///////////////////////////
-// 10. Card
-///////////////////////////
-interface Card {
-  id: string;          // uuid
-  code: string;        // ref code
-  name: string;
-  type: CardType;
-  cost?: number;
-  power?: number;
-  counter?: number;   //1k 2k 
-  keywords: Keyword[];
-  trigger?: Trigger;   
-  rules?: Rule[];      // general non-trigger rules
-}
+// Card definitions
+export { OP01_001, OP01_002, OP01_016, OP01_028, OP01_074, OP01_079, OP01_089, OP01_120, OP01_121 } from "./cards/OP01.js";
+export { OP02_001, OP02_070 } from "./cards/OP02.js";
+export { OP04_001 } from "./cards/OP04.js";
+export { OP06_001 } from "./cards/OP06.js";
+export { OP07_117 } from "./cards/OP07.js";
+export { EB03_001 } from "./cards/EB03.js";
+export { OP10_045 } from "./cards/OP10.js";

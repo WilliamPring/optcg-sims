@@ -1,15 +1,19 @@
 {
   "name": "optcg-sims",
   "version": "1.0.0",
+  "type": "module",
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
     "prettier": "^3.8.1",
     "ts-node": "^10.9.2",
-    "typescript": "^6.0.2"
+    "typescript": "^6.0.2",
+    "vitest": "^4.1.2"
   },
   "scripts": {
-    "dev": "ts-node src/index.ts",
-    "build": "tsc"
+    "dev": "node --loader ts-node/esm src/index.ts",
+    "build": "tsc",
+    "test": "vitest run",
+    "test:watch": "vitest"
   }
 }
