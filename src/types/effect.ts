@@ -7,6 +7,7 @@ export type EffectType =
   | "KO"
   | "PREVENT_KO"
   | "ADD_POWER"
+  | "MINUS_POWER"
   | "REST"
   | "SET_ACTIVE"
   | "ATTACH_DON"

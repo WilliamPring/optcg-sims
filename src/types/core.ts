@@ -33,7 +33,7 @@ export type TargetScope =
 
 export type Operator = "EQUALS" | "NOT_EQUALS" | "LTE" | "GTE" | "CONTAINS";
 
-export type Duration = "INSTANT" | "END_OF_TURN" | "PERMANENT";
+export type Duration = "INSTANT" | "END_OF_TURN" | "END_OF_OPPONENT_TURN" | "PERMANENT";
 
 export type TurnPhase = "REFRESH" | "DRAW" | "DON" | "MAIN" | "END";
 

@@ -54,9 +54,9 @@ export const EB03_001: Card = {
       ],
       effects: [
         {
-          // Give +2000 power to one of the opponent's Characters this turn.
+          // Give -2000 power to one of the opponent's Characters this turn.
           // Note: this BUFFS the opponent's character (correct per card text).
-          type: "ADD_POWER",
+          type: "MINUS_POWER",
           target: { scope: "SINGLE_ENEMY_CHARACTER", maxTargets: 1 },
           amount: 2000,
           duration: "END_OF_TURN",
