@@ -13,7 +13,7 @@ export interface Card {
   cost?: number;
   power?: number;
   counter?: number;
-  /** Leaders only: number of starting life cards (4 for dual-color, 5 for mono). */
+  /** Leaders only: number of starting life cards (3, 4, or 5 depending on the specific leader). */
   life?: number;
   keywords: Keyword[];
   rules?: Rule[];

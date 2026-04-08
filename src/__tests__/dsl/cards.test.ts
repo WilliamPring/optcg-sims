@@ -198,15 +198,15 @@ describe("EB03-001 Nefeltari Vivi (Leader)", () => {
     expect(effect?.replacementEffect).toBe(true);
   });
 
-  it("vivi-main: ACTIVATED REST cost, gives +2000 (not -2000) to enemy character", () => {
+  it("vivi-main: ACTIVATED REST cost, gives -2000 power to enemy character", () => {
     const rule = EB03_001.rules?.[1];
     expect(rule?.type).toBe("ACTIVATED");
     expect(rule?.timing).toBe("ACTIVATE_MAIN");
     expect(rule?.cost?.[0]?.type).toBe("REST");
     const effect = rule?.effects[0];
-    expect(effect?.type).toBe("ADD_POWER");
+    expect(effect?.type).toBe("MINUS_POWER");
     expect(effect?.target?.scope).toBe("SINGLE_ENEMY_CHARACTER");
-    expect(effect?.amount).toBe(2000); // buff opponent's character, per card text
+    expect(effect?.amount).toBe(2000);
     expect(effect?.duration).toBe("END_OF_TURN");
     expect(effect?.optional).toBe(true);
   });
